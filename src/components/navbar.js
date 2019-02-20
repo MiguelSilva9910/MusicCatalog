@@ -5,7 +5,6 @@ import Publish from './publish';
 import '../style/navbar.css';
 
 class Navbar extends Component {
-
     render() {
         return (
             <div className="AppNavbar">
@@ -14,13 +13,13 @@ class Navbar extends Component {
                         <div>
                             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                                 <ul className="navbar-nav mr-auto">
-                                    <li><NavLink to='/' className="nav-link"> Home</NavLink></li>
-                                    <li><NavLink to='/Publish' className="nav-link">Publish</NavLink></li>
+                                    <li><NavLink to='/'  className="nav-link"> Home</NavLink></li>
+                                    <li><NavLink to='/Publish'  className="nav-link">Publish</NavLink></li>
                                 </ul>
                             </nav>
                             <Switch>
                                 <Route exact path='/' component={App} />
-                                <Route path='/Publish' component={Publish} />
+                                <Route path='/Publish'   component={Publish} />
                             </Switch>
                         </div>
                     </Router>

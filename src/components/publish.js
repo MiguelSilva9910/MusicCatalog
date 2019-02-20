@@ -6,13 +6,14 @@ import { artists } from '../firebase';
 class Publish extends Component {
     constructor(props) {
         super(props);
-        this.onHandleSubmitArtist = this.onHandleSubmitArtist.bind(this);
-
         this.state = {
             nameAuthor: '',
             nationality: '',
             people: []
         };
+        this.onHandleSubmitArtist = this.onHandleSubmitArtist.bind(this);
+        this.onNameChange = this.onNameChange.bind(this);
+        this.onNationality = this.onNationality.bind(this);
     }
 
     componentDidMount() {
@@ -35,22 +36,31 @@ class Publish extends Component {
         this.setState({
             nameAuthor: '',
             nationality: ''
-          });
+        });
+    }
+
+    onNameChange(e) {
+        this.setState({
+            nameAuthor: e.target.value
+        });
+    }
+
+    onNationality(e) {
+        this.setState({
+            nationality: e.target.value
+        });
     }
 
     renderAuthor() {
         return this.state.people.map((artist, index) => {
             return (
-                <div key={index} className="post-container">
-                    <div className="artists">
-                        <p>{artist.nameAuthor}</p>
-                        <hr className="hrPosts" />
-                        <p>{artist.nationality}</p>
-                    </div>
+                <div key={index}>
+                    <p>Name: {artist.nameAuthor} -> Nationality: {artist.nationality}</p>
                 </div>
             )
         });
     }
+
 
     render() {
         return (
@@ -61,26 +71,30 @@ class Publish extends Component {
                     </div>
                     <form className="Adding-Artist" onSubmit={this.onHandleSubmitArtist}>
                         <div className="form-group">
-                            <input className="Input"
+                            <input
+                                className="form-control"
                                 placeholder="Name Artist"
                                 type="text"
                                 name="nameAuthor"
                                 ref="nameAuthor"
+                                onChange={this.onNameChange}
                                 value={this.state.nameAuthor}>
                             </input>
                         </div>
                         <div className="form-group">
                             <input
-                                className="Input"
+                                className="form-control"
                                 type="text"
                                 name="nationality"
                                 ref="nationality"
+                                onChange={this.onNationality}
                                 value={this.state.nationality}
                                 placeholder="Country Artist">
                             </input>
                         </div>
-                        <br />
-                        <button className="btn btn-primary">Send</button>
+                        <button
+                            className="btn btn-primary"
+                        >Send</button>
                     </form>
                 </div>
                 <br />

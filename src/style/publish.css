@@ -24,3 +24,8 @@
     padding-top: 12px;
     margin: 100px;
 }
+
+.tableBody{
+    width: 10px;
+    height: 10px;
+}
