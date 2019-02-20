@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.Table{
+    border-style: solid ;
+    width: 20%;
+    text-align: center;
+}
+
+.Publish{
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+.Adding-Artist{
+    padding: 25px;
+    border-style: solid ;
+    width: 20%;
+}
+
+.primary{
+    padding-top: 12px;
+    margin: 100px;
+}
