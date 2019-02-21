@@ -3,21 +3,46 @@
     padding: 0;
 }
 
-.Table{
+.TableArtist{
     border-style: solid ;
     width: 20%;
     text-align: center;
 }
 
+
+.TableTracks{
+    border-style: solid ;
+    width: 20%;
+    text-align: center;
+    margin-left: 22.9%;
+    margin-top: -2.5%;
+}
+
+.render{
+    margin-top: 12%;
+
+}
 .Publish{
-    margin-left: 2%;
     margin-top: 2%;
+    margin-left: 2%;
 }
 
 .Adding-Artist{
+    float: left;
     padding: 25px;
     border-style: solid ;
     width: 20%;
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: flex-start;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+    align-items: flex-start;
+    
 }
 
 .primary{
@@ -28,4 +53,22 @@
 .tableBody{
     width: 10px;
     height: 10px;
+}
+
+.Adding-tracks{
+    float: left;
+    padding: 25px;
+    border-style: solid ;
+    width: 20%;
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: flex-start;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+    margin-left: 25px;
+    margin-top: 0%;
 }

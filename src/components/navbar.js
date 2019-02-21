@@ -19,7 +19,7 @@ class Navbar extends Component {
                             </nav>
                             <Switch>
                                 <Route exact path='/' component={App} />
-                                <Route path='/Publish'   component={Publish} />
+                                <Route path='/Publish' component={Publish} />
                             </Switch>
                         </div>
                     </Router>
