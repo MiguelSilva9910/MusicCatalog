@@ -62,10 +62,8 @@ class Track extends Component {
     render() {
         return (
             <div>
-                <div className="TableTracks">
+                <form className="form border border-light p-5" onSubmit={this.onHandleSubmitTrack}>
                     <h2 className="title">Adding Tracks</h2>
-                </div>
-                <form className="Adding-tracks" onSubmit={this.onHandleSubmitTrack}>
                     <div className="form-group">
                         <input
                             className="form-control"

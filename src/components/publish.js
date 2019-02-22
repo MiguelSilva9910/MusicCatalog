@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import '../style/publish.css';
 import Track from './Track';
 import Artist from './Artist';
+import Album from './Album';
 
 class Publish extends Component {
     render() {
@@ -10,6 +11,7 @@ class Publish extends Component {
             <div className="forms">
                     <Artist />
                     <Track />
+                    <Album />
             </div>
         );
     };

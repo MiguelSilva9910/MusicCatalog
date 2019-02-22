@@ -17,7 +17,6 @@ class ShowTracks extends Component{
                 this.setState({ 
                     tracks: Object.entries(val)
                     .reduce((accumulator, obj) => ([...accumulator, obj[1]]), [])
-                    .reverse()
                 });
             }
         });
@@ -27,7 +26,11 @@ class ShowTracks extends Component{
         return this.state.tracks.map((track, index) => {
           return (
             <div key={index}>
-              <p>Name: {track.nameTrack} </p>
+              <p>Name Track: {track.nameTrack} </p>
+              <p>Name Album: {track.nameAlbum}</p>
+              <p>Name Music: {track.nameMusic}</p>
+              <p>Duration: {track.duration}</p>
+              <br />
             </div>
           )
         });
