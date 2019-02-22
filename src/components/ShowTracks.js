@@ -25,13 +25,13 @@ class ShowTracks extends Component {
   render() {
     return this.state.tracks.map((track, index) => {
       return (
-        <div key={index} className="">
-          <p>Name Track: {track.nameTrack} </p>
-          <p>Name Album: {track.nameAlbum}</p>
-          <p>Name Music: {track.nameMusic}</p>
-          <p>Duration: {track.duration}</p>
-          <br />
-        </div>
+          <div key={index}>
+            <p>Name Track: {track.nameTrack} </p>
+            <p>Name Album: {track.nameAlbum}</p>
+            <p>Duration: {track.duration}</p>
+            <p>Gender: {track.gender}</p>
+            <hr />
+          </div>
       )
     });
   }

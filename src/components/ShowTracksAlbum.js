@@ -23,17 +23,17 @@ class ShowTracksAlbum extends Component {
     }
 
     render() {
-        return (
-            <select className="form-control" ref="tracksSelect" defaultValue="" required>
-                <option value="" disabled>Tracks</option>
-                {
-                    this.state.tracks.map(function (track, index) {
-                        return <option key={index}
-                            value={track.nameTrack}>{track.nameTrack}</option>;
-                    })
-                }
-            </select>
-        );
+            return (
+                <select className="form-control"  ref="tracksSelect" >
+                    <option value="">if you want choose the track</option>
+                    {
+                        this.state.tracks.map(function (track, index) {
+                            return <option key={index}
+                                value={track.nameTrack}>{track.nameTrack}</option>;
+                        })
+                    }
+                </select>
+            );
     }
 
 }

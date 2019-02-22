@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { albums } from '../firebase';
+import { albums} from '../firebase';
 
 class ShowAlbum extends Component {
     constructor(props) {
@@ -25,9 +25,11 @@ class ShowAlbum extends Component {
     render() {
         return this.state.albums.map((album, index) => {
             return (
-                <div key={index} className="">
+                <div key={index}>
                     <p>Name: {album.nameAlbum}</p>
                     <p>Gender: {album.gender}</p>
+                    <p>Track: {album.tracks}</p>
+                    <hr />
                 </div>
             )
         });

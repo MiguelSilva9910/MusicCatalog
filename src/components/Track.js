@@ -7,14 +7,14 @@ class Track extends Component {
         this.state = {
             nameTrack: '',
             nameAlbum: '',
-            nameMusic: '',
-            duration: ''
+            duration: '',
+            gender: ''
         };
         this.onNameTrackChange = this.onNameTrackChange.bind(this);
-        this.onNameMusicChange = this.onNameMusicChange.bind(this);
         this.onNameAlbumChange = this.onNameAlbumChange.bind(this);
         this.onDurationChange = this.onDurationChange.bind(this);
         this.onHandleSubmitTrack = this.onHandleSubmitTrack.bind(this);
+        this.onGenderChange = this.onGenderChange.bind(this);
     }
 
 
@@ -23,15 +23,15 @@ class Track extends Component {
         const track = {
             nameTrack: this.state.nameTrack,
             nameAlbum: this.state.nameAlbum,
-            nameMusic: this.state.nameMusic,
-            duration: this.state.duration
+            duration: this.state.duration,
+            gender: this.state.gender
         };
         tracks.push(track);
         this.setState({
             nameTrack: '',
             nameAlbum: '',
-            nameMusic: '',
-            duration: ''
+            duration: '',
+            gender: ''
         });
     }
 
@@ -41,15 +41,15 @@ class Track extends Component {
         });
     }
 
-    onNameAlbumChange(e) {
+    onGenderChange(e) {
         this.setState({
-            nameAlbum: e.target.value
+            gender: e.target.value
         });
     }
 
-    onNameMusicChange(e) {
+    onNameAlbumChange(e) {
         this.setState({
-            nameMusic: e.target.value
+            nameAlbum: e.target.value
         });
     }
 
@@ -89,17 +89,6 @@ class Track extends Component {
                     <div className="form-group">
                         <input
                             className="form-control"
-                            placeholder="Name Music"
-                            type="text"
-                            name="nameMusic"
-                            ref="nameMusic"
-                            onChange={this.onNameMusicChange}
-                            value={this.state.nameMusic}>
-                        </input>
-                    </div>
-                    <div className="form-group">
-                        <input
-                            className="form-control"
                             type="text"
                             name="duration"
                             ref="duration"
@@ -107,6 +96,24 @@ class Track extends Component {
                             value={this.state.duration}
                             placeholder="Duration">
                         </input>
+                    </div>
+                    <div className="form-group">
+                        <select className="form-control" value={this.state.gender} onChange={this.onGenderChange}>
+                            <option value="...">Choose the gender</option>
+                            <option value="Blues">Blues</option>
+                            <option value="Eletronica">Eletronica</option>
+                            <option value="Grunge">Grunge</option>
+                            <option value="Hard Rock">Hard Rock</option>
+                            <option value="Hardcore">Hardcore</option>
+                            <option value="Heavy Metal">Heavy Metal</option>
+                            <option value="Hip Hop">Hip Hop</option>
+                            <option value="Hip Hop Tuga">Hip Hop Tuga</option>
+                            <option value="House">House</option>
+                            <option value="Indie">Indie</option>
+                            <option value="Rap">Rap</option>
+                            <option value="RapTuga">RapTuga</option>
+                            <option value="Reggae">Reggae</option>
+                        </select>
                     </div>
                     <button
                         className="btn btn-primary"

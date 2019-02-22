@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { artists } from '../firebase';
+import { artists, tracks } from '../firebase';
 
 class ShowArtist extends Component {
     constructor(props) {
         super(props);
         this.state = {
             people: []
-        }
+        };
     }
 
     componentDidMount() {
@@ -24,11 +24,14 @@ class ShowArtist extends Component {
     }
 
     render() {
-        return this.state.people.map((artist) => {
+        return this.state.people.map((artist, index) => {
             return (
-                <div className="">
-                    <p>Name: {artist.nameAuthor} -> Nationality: {artist.nationality}</p>
-                </div>
+                    <div className="" key={index}>
+                        <p>Name: {artist.nameAuthor}</p>
+                        <p>Nationality: {artist.nationality}</p>
+                        <p>Tracks: {artist.tracks}</p>
+                        <hr />
+                    </div>
             )
         });
     }

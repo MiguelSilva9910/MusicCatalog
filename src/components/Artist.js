@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { artists } from '../firebase';
 import '../style/artist.css';
+import ShowTracksAlbum from './ShowTracksAlbum';
 
 class Artist extends Component {
     constructor(props) {
@@ -8,11 +9,13 @@ class Artist extends Component {
 
         this.state = {
             nameAuthor: '',
-            nationality: ''
+            nationality: '',
+            tracks: ''
         };
         this.onHandleSubmitArtist = this.onHandleSubmitArtist.bind(this);
         this.onNameChange = this.onNameChange.bind(this);
         this.onNationality = this.onNationality.bind(this);
+        this.onTrackChange = this.onTrackChange.bind(this);
     }
 
 
@@ -22,23 +25,23 @@ class Artist extends Component {
         const artist = {
             nameAuthor: this.state.nameAuthor,
             nationality: this.state.nationality,
-            error: false,
+            tracks: this.state.tracks,
+            error: false
         };
-
         artists.on('value', snapshot => {
             const val = snapshot.val();
- 
             if(val) {
                 const people = Object.entries(val)
                 .reduce((accumulator, obj) => ([...accumulator, obj[1]]), []);
 
                 const exists = people.some((person) => (person.nameAuthor === artist.nameAuthor));
-
+            
                 if(!exists){
                     artists.push(artist);   
                     this.setState({
                         nameAuthor: '',
-                        nationality: ''
+                        nationality: '',
+                        tracks: ''
                     });
                 } else {
                     this.setState({
@@ -52,6 +55,12 @@ class Artist extends Component {
     onNameChange(e) {
         this.setState({
             nameAuthor: e.target.value
+        });
+    }
+
+    onTrackChange(e){
+        this.setState({
+            tracks: e.target.value
         });
     }
 
@@ -88,6 +97,9 @@ class Artist extends Component {
                             value={this.state.nationality}
                             placeholder="Country Artist">
                         </input>
+                    </div>
+                    <div className="form-group">
+                        <ShowTracksAlbum />
                     </div>
                     <button
                         className="btn btn-primary">

@@ -105,7 +105,7 @@ class Album extends Component {
                             placeholder="Year">
                         </input>
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                         <input
                             className="form-control"
                             type="text"
@@ -115,7 +115,7 @@ class Album extends Component {
                             value={this.state.tracks}
                             placeholder="Tracks">
                         </input>
-                    </div>
+                    </div> */}
                     <div className="form-group">
                         <select className="form-control" value={this.state.gender} onChange={this.onGenderChange}>
                             <option value="...">Choose the gender</option>
