@@ -10,17 +10,29 @@ class ShowTracksAlbum extends Component {
         };
     }
 
+    componentDidMount() {
+        tracks.on('value', snapshot => {
+            const val = snapshot.val();
+            if (val) {
+                this.setState({
+                    tracks: Object.entries(val)
+                        .reduce((accumulator, obj) => ([...accumulator, obj[1]]), [])
+                });
+            }
+        });
+    }
+
     render() {
         return (
-                <select ref="tracksSelect" defaultValue="" required>
-                    <option value="" disabled>Tracks</option>
-                    {
-                        tracks.map(function (track) {
-                            return <option key={track.nameTrack}
-                                value={track.nameTrack}>{track.nameTrack}</option>;
-                        })
-                    }
-                </select>
+            <select className="form-control" ref="tracksSelect" defaultValue="" required>
+                <option value="" disabled>Tracks</option>
+                {
+                    this.state.tracks.map(function (track, index) {
+                        return <option key={index}
+                            value={track.nameTrack}>{track.nameTrack}</option>;
+                    })
+                }
+            </select>
         );
     }
 
