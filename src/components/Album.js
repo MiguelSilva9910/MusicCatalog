@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { albums } from '../firebase';
+import { albums} from '../firebase';
 import '../style/album.css';
+import ShowTracksAlbum from './ShowTracksAlbum';
 
 class Album extends Component {
     constructor(props) {
@@ -11,7 +12,6 @@ class Album extends Component {
             nameAlbum: '',
             gender: ''
         };
-
         this.onTrackChange = this.onTrackChange.bind(this);
         this.onGenderChange = this.onGenderChange.bind(this);
         this.onHandleSubmitAlbum = this.onHandleSubmitAlbum.bind(this);
@@ -117,8 +117,8 @@ class Album extends Component {
                         </input>
                     </div>
                     <div className="form-group">
-                        <select value={this.state.gender} onChange={this.onGenderChange}>
-                            <option value="" disabled selected>Choose the gender</option>
+                        <select className="form-control" value={this.state.gender} onChange={this.onGenderChange}>
+                            <option value="...">Choose the gender</option>
                             <option value="Blues">Blues</option>
                             <option value="Eletronica">Eletronica</option>
                             <option value="Grunge">Grunge</option>
@@ -134,6 +134,10 @@ class Album extends Component {
                             <option value="Reggae">Reggae</option>
                         </select>
                     </div>
+                    <div className="form-group">
+                        <ShowTracksAlbum />
+                    </div>
+                    <br />
                     <button
                         className="btn btn-primary">
                         Send
