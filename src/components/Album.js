@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { albums} from '../firebase';
+import { albums } from '../firebase';
 import '../style/album.css';
 import ShowTracksAlbum from './ShowTracksAlbum';
 
@@ -25,8 +25,7 @@ class Album extends Component {
             tracks: this.state.tracks,
             year: this.state.year,
             nameAlbum: this.state.nameAlbum,
-            gender: this.state.gender,
-            error: false
+            gender: this.state.gender
         };
         albums.on('value', snapshot => {
             const val = snapshot.val();
@@ -105,17 +104,6 @@ class Album extends Component {
                             placeholder="Year">
                         </input>
                     </div>
-                    {/* <div className="form-group">
-                        <input
-                            className="form-control"
-                            type="text"
-                            name="tracks"
-                            ref="tracks"
-                            onChange={this.onTrackChange}
-                            value={this.state.tracks}
-                            placeholder="Tracks">
-                        </input>
-                    </div> */}
                     <div className="form-group">
                         <select className="form-control" value={this.state.gender} onChange={this.onGenderChange}>
                             <option value="...">Choose the gender</option>

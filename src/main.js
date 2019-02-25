@@ -1,14 +1,21 @@
-import { BrowserRouter } from 'react-router-dom';
-import React, {Component} from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React, {Component, Fragment} from 'react';
 import Navbar from './components/navbar';
+import App from './components/App';
+import Publish from './components/publish';
+
 class Main extends Component {
     render(){
         return(
-            <div>
-                <BrowserRouter>
+            <BrowserRouter>
+                <Fragment>
                     <Navbar />
-                </BrowserRouter>
-            </div>
+                    <Switch>
+                        <Route exact path='/' component={App} />
+                        <Route path='/Publish' component={Publish} />
+                    </Switch>
+                </Fragment>
+            </BrowserRouter>
         );
     };
 }

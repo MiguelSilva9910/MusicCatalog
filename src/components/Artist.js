@@ -25,8 +25,7 @@ class Artist extends Component {
         const artist = {
             nameAuthor: this.state.nameAuthor,
             nationality: this.state.nationality,
-            tracks: this.state.tracks,
-            error: false
+            tracks: this.state.tracks
         };
         artists.on('value', snapshot => {
             const val = snapshot.val();

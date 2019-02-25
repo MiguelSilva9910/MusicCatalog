@@ -8,7 +8,8 @@ class Track extends Component {
             nameTrack: '',
             nameAlbum: '',
             duration: '',
-            gender: ''
+            gender: '',
+            error: false
         };
         this.onNameTrackChange = this.onNameTrackChange.bind(this);
         this.onNameAlbumChange = this.onNameAlbumChange.bind(this);
@@ -16,7 +17,6 @@ class Track extends Component {
         this.onHandleSubmitTrack = this.onHandleSubmitTrack.bind(this);
         this.onGenderChange = this.onGenderChange.bind(this);
     }
-
 
     onHandleSubmitTrack(e) {
         e.preventDefault();
@@ -26,12 +26,28 @@ class Track extends Component {
             duration: this.state.duration,
             gender: this.state.gender
         };
-        tracks.push(track);
-        this.setState({
-            nameTrack: '',
-            nameAlbum: '',
-            duration: '',
-            gender: ''
+        tracks.on('value', snapshot => {
+            const val = snapshot.val();
+            if(val) {
+                const Music = Object.entries(val)
+                .reduce((accumulator, obj) => ([...accumulator, obj[1]]), []);
+                
+                const exist = Music.some((music) => (music.nameTrack === track.nameTrack));
+
+                if(!exist){
+                    tracks.push(track);
+                    this.setState({
+                        nameTrack: '',
+                        nameAlbum: '',
+                        duration: '',
+                        gender: ''
+                    });
+                }else{
+                    this.setState({
+                        error: true,
+                    });
+                }
+            }
         });
     }
 
@@ -66,7 +82,7 @@ class Track extends Component {
                     <h2 className="title">Adding Tracks</h2>
                     <div className="form-group">
                         <input
-                            className="form-control"
+                            className={`form-control ${this.state.error ? "is-invalid" : ""}`}
                             placeholder="Name Track"
                             type="text"
                             name="nameTrack"

@@ -1,13 +1,29 @@
 import React, { Component } from 'react';
-import { albums} from '../firebase';
+import { albums } from '../firebase';
 
 class ShowAlbum extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            albums: []
-        }
+    state = {
+        albums: []
     }
+
+    // sortingFunction = (a, b) => {
+    //     switch(this.props.albumsOrderBy){
+    //         case "Most Recent": 
+    //             return this.orderByName;
+    //         case "Most Old": 
+    //             return this.orderByDate;
+    //         default:
+
+    //     }
+    // };
+
+    // orderByName = (a, b) => {
+    //     console.log("ordering by name...");
+    // }
+
+    // orderByDate = (a, b) => {
+    //     console.log("ordering by date...");
+    // }
 
     componentDidMount() {
         albums.on('value', snapshot => {
@@ -23,16 +39,34 @@ class ShowAlbum extends Component {
     }
 
     render() {
-        return this.state.albums.map((album, index) => {
-            return (
-                <div key={index}>
-                    <p>Name: {album.nameAlbum}</p>
-                    <p>Gender: {album.gender}</p>
-                    <p>Track: {album.tracks}</p>
-                    <hr />
-                </div>
-            )
-        });
+        return (
+            <div>
+                {
+                    this.state.albums.sort((a, b) => { //TODO move String to enum
+                        switch (this.props.albumsOrderBy) {
+                            case 'Most Recent':
+                                return a.year < b.year ? 1 : -1;
+                            case 'Most Old':
+                                return a.year > b.year ? 1 : -1;
+                            case 'Gender': 
+                                return a.gender.localeCompare(b.gender);
+                            default: // Will return the most recent to oldest expense by default
+                                return a.year < b.year ? 1 : -1;
+                        }
+                    }).map((album, index) => {
+                        return (
+                            <div key={index}>
+                                <p>Name: {album.nameAlbum}</p>
+                                <p>Gender: {album.gender}</p>
+                                <p>Track: {album.tracks}</p>
+                                <p>Year: {album.year}</p>
+                                <hr />
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        );
     }
 }
 

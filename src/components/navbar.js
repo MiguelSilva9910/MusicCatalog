@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
-import App from './App';
-import Publish from './publish';
+import { BrowserRouter as Router, NavLink } from 'react-router-dom';
 import '../style/navbar.css';
 
 class Navbar extends Component {
@@ -17,10 +15,6 @@ class Navbar extends Component {
                                     <li><NavLink to='/Publish'  className="nav-link">Publish</NavLink></li>
                                 </ul>
                             </nav>
-                            <Switch>
-                                <Route exact path='/' component={App} />
-                                <Route path='/Publish' component={Publish} />
-                            </Switch>
                         </div>
                     </Router>
                 </header>
