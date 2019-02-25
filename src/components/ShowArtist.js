@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { artists, tracks } from '../firebase';
+import { artists } from '../firebase';
 
 class ShowArtist extends Component {
     constructor(props) {

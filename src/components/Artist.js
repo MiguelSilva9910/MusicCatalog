@@ -10,7 +10,7 @@ class Artist extends Component {
         this.state = {
             nameAuthor: '',
             nationality: '',
-            tracks: ''
+            tracks: '',
         };
         this.onHandleSubmitArtist = this.onHandleSubmitArtist.bind(this);
         this.onNameChange = this.onNameChange.bind(this);
@@ -99,7 +99,7 @@ class Artist extends Component {
                         </input>
                     </div>
                     <div className="form-group">
-                        <ShowTracksAlbum />
+                        <ShowTracksAlbum onChange={this.onTrackChange}/>
                     </div>
                     <button
                         className="btn btn-primary">

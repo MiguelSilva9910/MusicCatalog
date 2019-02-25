@@ -24,7 +24,7 @@ class ShowTracksAlbum extends Component {
 
     render() {
             return (
-                <select className="form-control"  ref="tracksSelect" >
+                <select className="form-control"  ref="tracksSelect" onChange={this.props.onChange}>
                     <option value="">if you want choose the track</option>
                     {
                         this.state.tracks.map(function (track, index) {

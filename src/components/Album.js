@@ -135,7 +135,7 @@ class Album extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <ShowTracksAlbum />
+                        <ShowTracksAlbum onChange={this.onTrackChange} />
                     </div>
                     <br />
                     <button
