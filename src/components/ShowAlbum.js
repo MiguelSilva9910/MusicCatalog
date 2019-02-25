@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { albums } from '../firebase';
+import stateOrderBy from './enums/enums';
 
 class ShowAlbum extends Component {
     state = {
@@ -44,11 +45,11 @@ class ShowAlbum extends Component {
                 {
                     this.state.albums.sort((a, b) => { //TODO move String to enum
                         switch (this.props.albumsOrderBy) {
-                            case 'Most Recent':
+                            case stateOrderBy.MOSTRECENT:
                                 return a.year < b.year ? 1 : -1;
-                            case 'Most Old':
+                            case stateOrderBy.MOSTOLD:
                                 return a.year > b.year ? 1 : -1;
-                            case 'Gender': 
+                            case stateOrderBy.GENDER: 
                                 return a.gender.localeCompare(b.gender);
                             default: // Will return the most recent to oldest expense by default
                                 return a.year < b.year ? 1 : -1;
