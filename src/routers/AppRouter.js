@@ -1,23 +1,22 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import React, {Component, Fragment} from 'react';
-import Navbar from './components/navbar';
-import App from './components/App';
-import Publish from './components/publish';
+import Navbar from '../components/navbar';
+import HomePage from '../pages/HomePage';
+import PublishPage from '../pages/PublishPage';
 
-class Main extends Component {
+class AppRouter extends Component {
     render(){
         return(
             <BrowserRouter>
                 <Fragment>
                     <Navbar />
                     <Switch>
-                        <Route exact path='/' component={App} />
-                        <Route path='/Publish' component={Publish} />
+                        <Route exact path='/' component={HomePage} />
+                        <Route path='/Publish' component={PublishPage} />
                     </Switch>
                 </Fragment>
             </BrowserRouter>
         );
     };
 }
-
-export default Main;
+export default AppRouter;

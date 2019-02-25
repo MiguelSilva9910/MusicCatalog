@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { albums } from '../../firebase';
 
 class SelectOld extends Component {
     render() {

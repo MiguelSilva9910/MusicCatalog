@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 // import {artist, album, tracks} from '../firebase';
 import '../style/publish.css';
-import Track from './Track';
-import Artist from './Artist';
-import Album from './Album';
+import Track from '../components/Track';
+import Artist from '../components/Artist';
+import Album from '../components/Album';
 
 class Publish extends Component {
     render() {
