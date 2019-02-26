@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { tracks } from '../firebase';
 
 class ShowTracksAlbum extends Component {
@@ -22,9 +22,11 @@ class ShowTracksAlbum extends Component {
         });
     }
 
+
     render() {
-            return (
-                <select className="form-control"  ref="tracksSelect" onChange={this.props.onChange}>
+        return (
+            <Fragment>
+                <select className="form-control" multiple="multiple" ref="tracksSelect" onChange={this.props.onChange}>
                     <option value="">if you want choose the track</option>
                     {
                         this.state.tracks.map(function (track, index) {
@@ -33,7 +35,9 @@ class ShowTracksAlbum extends Component {
                         })
                     }
                 </select>
-            );
+                
+            </Fragment>
+        );
     }
 
 }

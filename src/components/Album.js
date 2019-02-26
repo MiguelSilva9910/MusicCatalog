@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { albums } from '../firebase';
 import '../style/album.css';
 import ShowTracksAlbum from './ShowTracksAlbum';
+// import { ReactSelector } from 'react-selector';
 
 class Album extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tracks: '',
+            tracks: [],
             year: '',
             nameAlbum: '',
             gender: ''
@@ -38,7 +39,7 @@ class Album extends Component {
                 if (!exists) {
                     albums.push(album);
                     this.setState({
-                        tracks: '',
+                        tracks: [],
                         year: '',
                         nameAlbum: '',
                         gender: ''
@@ -53,9 +54,7 @@ class Album extends Component {
     }
 
     onTrackChange(e) {
-        this.setState({
-            tracks: e.target.value
-        });
+        this.setState({tracks: [...e.target.selectedOptions].map(o => o.value)}); 
     }
 
     onYearChange(e) {
@@ -123,7 +122,7 @@ class Album extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <ShowTracksAlbum onChange={this.onTrackChange} />
+                        <ShowTracksAlbum  onChange={this.onTrackChange} />
                     </div>
                     <br />
                     <button

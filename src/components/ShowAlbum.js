@@ -59,7 +59,7 @@ class ShowAlbum extends Component {
                             <div key={index}>
                                 <p>Name: {album.nameAlbum}</p>
                                 <p>Gender: {album.gender}</p>
-                                <p>Track: {album.tracks}</p>
+                                <p>Track: {album.tracks + ''}</p>
                                 <p>Year: {album.year}</p>
                                 <hr />
                             </div>

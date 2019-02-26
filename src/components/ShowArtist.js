@@ -29,7 +29,7 @@ class ShowArtist extends Component {
                     <div className="" key={index}>
                         <p>Name: {artist.nameAuthor}</p>
                         <p>Nationality: {artist.nationality}</p>
-                        <p>Tracks: {artist.tracks}</p>
+                        <p>Tracks: {artist.tracks + ''}</p>
                         <hr />
                     </div>
             )

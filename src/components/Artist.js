@@ -10,7 +10,7 @@ class Artist extends Component {
         this.state = {
             nameAuthor: '',
             nationality: '',
-            tracks: '',
+            tracks: [],
         };
         this.onHandleSubmitArtist = this.onHandleSubmitArtist.bind(this);
         this.onNameChange = this.onNameChange.bind(this);
@@ -40,7 +40,7 @@ class Artist extends Component {
                     this.setState({
                         nameAuthor: '',
                         nationality: '',
-                        tracks: ''
+                        tracks: []
                     });
                 } else {
                     this.setState({
@@ -58,9 +58,7 @@ class Artist extends Component {
     }
 
     onTrackChange(e){
-        this.setState({
-            tracks: e.target.value
-        });
+        this.setState({tracks: [...e.target.selectedOptions].map(o => o.value)}); 
     }
 
     onNationality(e) {
