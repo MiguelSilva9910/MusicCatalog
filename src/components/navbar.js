@@ -10,15 +10,15 @@ class Navbar extends Component {
                     <div>
                         <nav className="navbar navbar-expand-lg navbar-light bg-light">
                             <ul className="navbar-nav mr-auto">
-                                <li><Link to='/'  className="nav-link"> Home</Link></li>
-                                <li><Link to='/Publish'  className="nav-link">Publish</Link></li>
+                                <li><Link to='/' className="nav-link"> Home</Link></li>
+                                <li><Link to='/Publish' className="nav-link">Publish</Link></li>
                             </ul>
                         </nav>
                     </div>
                 </header>
             </div>
-        );
-    };
-}
-
+                );
+            };
+        }
+        
 export default Navbar;

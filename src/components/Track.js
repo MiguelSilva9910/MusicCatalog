@@ -28,20 +28,25 @@ class Track extends Component {
         };
         tracks.on('value', snapshot => {
             const val = snapshot.val();
-            if(val) {
+            if (val) {
                 const Music = Object.entries(val)
-                .reduce((accumulator, obj) => ([...accumulator, obj[1]]), []);
-                
-                const exist = Music.some((music) => (music.nameTrack === track.nameTrack));
+                    .reduce((accumulator, obj) => ([...accumulator, obj[1]]), []);
 
-                if(!exist){
-                    tracks.push(track);
-                    this.setState({
-                        nameTrack: '',
-                        nameAlbum: '',
-                        duration: '',
-                        gender: ''
-                    });
+                const exist = Music.some((music) => (music.nameTrack === track.nameTrack));
+                if (this.state.nameTrack) {
+                    if (!exist) {
+                        tracks.push(track);
+                        this.setState({
+                            nameTrack: '',
+                            nameAlbum: '',
+                            duration: '',
+                            gender: ''
+                        });
+                    }else {
+                        this.setState({
+                            error: true,
+                        });
+                    }
                 }else{
                     this.setState({
                         error: true,

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { albums } from '../firebase';
 import '../style/album.css';
 import ShowTracksAlbum from './ShowTracksAlbum';
-// import { ReactSelector } from 'react-selector';
 
 class Album extends Component {
     constructor(props) {
@@ -35,16 +34,21 @@ class Album extends Component {
                     .reduce((accumulator, obj) => ([...accumulator, obj[1]]), []);
 
                 const exists = checkAlbum.some((thisAlbum) => (thisAlbum.nameAlbum === album.nameAlbum));
-
-                if (!exists) {
-                    albums.push(album);
-                    this.setState({
-                        tracks: [],
-                        year: '',
-                        nameAlbum: '',
-                        gender: ''
-                    });
-                } else {
+                if (this.state.nameAlbum) {
+                    if (!exists) {
+                        albums.push(album);
+                        this.setState({
+                            tracks: [],
+                            year: '',
+                            nameAlbum: '',
+                            gender: ''
+                        });
+                    } else {
+                        this.setState({
+                            error: true
+                        });
+                    }
+                }else{
                     this.setState({
                         error: true
                     });
@@ -54,7 +58,7 @@ class Album extends Component {
     }
 
     onTrackChange(e) {
-        this.setState({tracks: [...e.target.selectedOptions].map(o => o.value)}); 
+        this.setState({ tracks: [...e.target.selectedOptions].map(o => o.value) });
     }
 
     onYearChange(e) {
@@ -122,7 +126,7 @@ class Album extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <ShowTracksAlbum  onChange={this.onTrackChange} />
+                        <ShowTracksAlbum onChange={this.onTrackChange} />
                     </div>
                     <br />
                     <button

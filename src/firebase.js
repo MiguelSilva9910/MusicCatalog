@@ -12,7 +12,7 @@ import * as firebase from 'firebase';
 
   firebase.initializeApp(config);
 
-
+  export const database = firebase.database();
   export const artists = firebase.database().ref('/artists'); 
   export const albums = firebase.database().ref('/albums'); 
   export const tracks = firebase.database().ref('/tracks');

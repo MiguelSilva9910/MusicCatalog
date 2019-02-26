@@ -29,26 +29,32 @@ class Artist extends Component {
         };
         artists.on('value', snapshot => {
             const val = snapshot.val();
-            if(val) {
+            if (val) {
                 const people = Object.entries(val)
-                .reduce((accumulator, obj) => ([...accumulator, obj[1]]), []);
+                    .reduce((accumulator, obj) => ([...accumulator, obj[1]]), []);
 
                 const exists = people.some((person) => (person.nameAuthor === artist.nameAuthor));
-            
-                if(!exists){
-                    artists.push(artist);   
-                    this.setState({
-                        nameAuthor: '',
-                        nationality: '',
-                        tracks: []
-                    });
-                } else {
+
+                if (this.state.nameAuthor) {
+                    if (!exists) {
+                        artists.push(artist);
+                        this.setState({
+                            nameAuthor: '',
+                            nationality: '',
+                            tracks: []
+                        });
+                    } else {
+                        this.setState({
+                            error: true,
+                        });
+                    }
+                }else{
                     this.setState({
                         error: true,
                     });
                 }
             }
-         });
+        });
     }
 
     onNameChange(e) {
@@ -57,8 +63,8 @@ class Artist extends Component {
         });
     }
 
-    onTrackChange(e){
-        this.setState({tracks: [...e.target.selectedOptions].map(o => o.value)}); 
+    onTrackChange(e) {
+        this.setState({ tracks: [...e.target.selectedOptions].map(o => o.value) });
     }
 
     onNationality(e) {
@@ -96,7 +102,7 @@ class Artist extends Component {
                         </input>
                     </div>
                     <div className="form-group">
-                        <ShowTracksAlbum onChange={this.onTrackChange}/>
+                        <ShowTracksAlbum onChange={this.onTrackChange} />
                     </div>
                     <button
                         className="btn btn-primary">

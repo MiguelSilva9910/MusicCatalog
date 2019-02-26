@@ -43,7 +43,7 @@ class ShowAlbum extends Component {
         return (
             <div>
                 {
-                    this.state.albums.sort((a, b) => { //TODO move String to enum
+                    this.state.albums.sort((a, b) => { 
                         switch (this.props.albumsOrderBy) {
                             case stateOrderBy.MOSTRECENT:
                                 return a.year < b.year ? 1 : -1;
@@ -51,7 +51,7 @@ class ShowAlbum extends Component {
                                 return a.year > b.year ? 1 : -1;
                             case stateOrderBy.GENDER: 
                                 return a.gender.localeCompare(b.gender);
-                            default: // Will return the most recent to oldest expense by default
+                            default: 
                                 return a.year < b.year ? 1 : -1;
                         }
                     }).map((album, index) => {
