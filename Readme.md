@@ -42,4 +42,4 @@ Done
 
 ## Modelo E-R
 
-![Imgur](https://i.imgur.com/HfS1QMP.png)
+![Imgur](https://i.imgur.com/z2fTO9S.png)
